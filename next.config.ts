@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  outputFileTracingRoot: "/workspace/projects",
+  output: 'export',
   typescript: {
     ignoreBuildErrors: true,
   },
