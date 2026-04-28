@@ -28,10 +28,16 @@ jobs:
         env:
           PAGES_BASE_PATH: ${{ github.event.repository.name }}
           
+      - name: Prepare Pages artifact
+        run: |
+          cp -r .next/static out
+          cp -r .next/server out 2>/dev/null || true
+          ls -la out/
+          
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .next
+          path: out
 
   deploy:
     needs: build-and-deploy
